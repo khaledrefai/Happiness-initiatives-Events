@@ -31,12 +31,6 @@ import org.springframework.util.Base64Utils;
 @WithMockUser
 class AttachmentResourceIT {
 
-    private static final String DEFAULT_FILENAME = "AAAAAAAAAA";
-    private static final String UPDATED_FILENAME = "BBBBBBBBBB";
-
-    private static final String DEFAULT_CONTENT_TYPE = "AAAAAAAAAA";
-    private static final String UPDATED_CONTENT_TYPE = "BBBBBBBBBB";
-
     private static final byte[] DEFAULT_ATTACH_FILE = TestUtil.createByteArray(1, "0");
     private static final byte[] UPDATED_ATTACH_FILE = TestUtil.createByteArray(1, "1");
     private static final String DEFAULT_ATTACH_FILE_CONTENT_TYPE = "image/jpg";
@@ -66,11 +60,7 @@ class AttachmentResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Attachment createEntity(EntityManager em) {
-        Attachment attachment = new Attachment()
-            .filename(DEFAULT_FILENAME)
-            .contentType(DEFAULT_CONTENT_TYPE)
-            .attachFile(DEFAULT_ATTACH_FILE)
-            .attachFileContentType(DEFAULT_ATTACH_FILE_CONTENT_TYPE);
+        Attachment attachment = new Attachment().attachFile(DEFAULT_ATTACH_FILE).attachFileContentType(DEFAULT_ATTACH_FILE_CONTENT_TYPE);
         return attachment;
     }
 
@@ -81,11 +71,7 @@ class AttachmentResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Attachment createUpdatedEntity(EntityManager em) {
-        Attachment attachment = new Attachment()
-            .filename(UPDATED_FILENAME)
-            .contentType(UPDATED_CONTENT_TYPE)
-            .attachFile(UPDATED_ATTACH_FILE)
-            .attachFileContentType(UPDATED_ATTACH_FILE_CONTENT_TYPE);
+        Attachment attachment = new Attachment().attachFile(UPDATED_ATTACH_FILE).attachFileContentType(UPDATED_ATTACH_FILE_CONTENT_TYPE);
         return attachment;
     }
 
@@ -112,8 +98,6 @@ class AttachmentResourceIT {
         List<Attachment> attachmentList = attachmentRepository.findAll();
         assertThat(attachmentList).hasSize(databaseSizeBeforeCreate + 1);
         Attachment testAttachment = attachmentList.get(attachmentList.size() - 1);
-        assertThat(testAttachment.getFilename()).isEqualTo(DEFAULT_FILENAME);
-        assertThat(testAttachment.getContentType()).isEqualTo(DEFAULT_CONTENT_TYPE);
         assertThat(testAttachment.getAttachFile()).isEqualTo(DEFAULT_ATTACH_FILE);
         assertThat(testAttachment.getAttachFileContentType()).isEqualTo(DEFAULT_ATTACH_FILE_CONTENT_TYPE);
     }
@@ -143,50 +127,6 @@ class AttachmentResourceIT {
 
     @Test
     @Transactional
-    void checkFilenameIsRequired() throws Exception {
-        int databaseSizeBeforeTest = attachmentRepository.findAll().size();
-        // set the field null
-        attachment.setFilename(null);
-
-        // Create the Attachment, which fails.
-
-        restAttachmentMockMvc
-            .perform(
-                post(ENTITY_API_URL)
-                    .with(csrf())
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .content(TestUtil.convertObjectToJsonBytes(attachment))
-            )
-            .andExpect(status().isBadRequest());
-
-        List<Attachment> attachmentList = attachmentRepository.findAll();
-        assertThat(attachmentList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
-    void checkContentTypeIsRequired() throws Exception {
-        int databaseSizeBeforeTest = attachmentRepository.findAll().size();
-        // set the field null
-        attachment.setContentType(null);
-
-        // Create the Attachment, which fails.
-
-        restAttachmentMockMvc
-            .perform(
-                post(ENTITY_API_URL)
-                    .with(csrf())
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .content(TestUtil.convertObjectToJsonBytes(attachment))
-            )
-            .andExpect(status().isBadRequest());
-
-        List<Attachment> attachmentList = attachmentRepository.findAll();
-        assertThat(attachmentList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
     void getAllAttachments() throws Exception {
         // Initialize the database
         attachmentRepository.saveAndFlush(attachment);
@@ -197,8 +137,6 @@ class AttachmentResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(attachment.getId().intValue())))
-            .andExpect(jsonPath("$.[*].filename").value(hasItem(DEFAULT_FILENAME)))
-            .andExpect(jsonPath("$.[*].contentType").value(hasItem(DEFAULT_CONTENT_TYPE)))
             .andExpect(jsonPath("$.[*].attachFileContentType").value(hasItem(DEFAULT_ATTACH_FILE_CONTENT_TYPE)))
             .andExpect(jsonPath("$.[*].attachFile").value(hasItem(Base64Utils.encodeToString(DEFAULT_ATTACH_FILE))));
     }
@@ -215,8 +153,6 @@ class AttachmentResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(attachment.getId().intValue()))
-            .andExpect(jsonPath("$.filename").value(DEFAULT_FILENAME))
-            .andExpect(jsonPath("$.contentType").value(DEFAULT_CONTENT_TYPE))
             .andExpect(jsonPath("$.attachFileContentType").value(DEFAULT_ATTACH_FILE_CONTENT_TYPE))
             .andExpect(jsonPath("$.attachFile").value(Base64Utils.encodeToString(DEFAULT_ATTACH_FILE)));
     }
@@ -240,11 +176,7 @@ class AttachmentResourceIT {
         Attachment updatedAttachment = attachmentRepository.findById(attachment.getId()).get();
         // Disconnect from session so that the updates on updatedAttachment are not directly saved in db
         em.detach(updatedAttachment);
-        updatedAttachment
-            .filename(UPDATED_FILENAME)
-            .contentType(UPDATED_CONTENT_TYPE)
-            .attachFile(UPDATED_ATTACH_FILE)
-            .attachFileContentType(UPDATED_ATTACH_FILE_CONTENT_TYPE);
+        updatedAttachment.attachFile(UPDATED_ATTACH_FILE).attachFileContentType(UPDATED_ATTACH_FILE_CONTENT_TYPE);
 
         restAttachmentMockMvc
             .perform(
@@ -259,8 +191,6 @@ class AttachmentResourceIT {
         List<Attachment> attachmentList = attachmentRepository.findAll();
         assertThat(attachmentList).hasSize(databaseSizeBeforeUpdate);
         Attachment testAttachment = attachmentList.get(attachmentList.size() - 1);
-        assertThat(testAttachment.getFilename()).isEqualTo(UPDATED_FILENAME);
-        assertThat(testAttachment.getContentType()).isEqualTo(UPDATED_CONTENT_TYPE);
         assertThat(testAttachment.getAttachFile()).isEqualTo(UPDATED_ATTACH_FILE);
         assertThat(testAttachment.getAttachFileContentType()).isEqualTo(UPDATED_ATTACH_FILE_CONTENT_TYPE);
     }
@@ -340,8 +270,6 @@ class AttachmentResourceIT {
         Attachment partialUpdatedAttachment = new Attachment();
         partialUpdatedAttachment.setId(attachment.getId());
 
-        partialUpdatedAttachment.contentType(UPDATED_CONTENT_TYPE);
-
         restAttachmentMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, partialUpdatedAttachment.getId())
@@ -355,8 +283,6 @@ class AttachmentResourceIT {
         List<Attachment> attachmentList = attachmentRepository.findAll();
         assertThat(attachmentList).hasSize(databaseSizeBeforeUpdate);
         Attachment testAttachment = attachmentList.get(attachmentList.size() - 1);
-        assertThat(testAttachment.getFilename()).isEqualTo(DEFAULT_FILENAME);
-        assertThat(testAttachment.getContentType()).isEqualTo(UPDATED_CONTENT_TYPE);
         assertThat(testAttachment.getAttachFile()).isEqualTo(DEFAULT_ATTACH_FILE);
         assertThat(testAttachment.getAttachFileContentType()).isEqualTo(DEFAULT_ATTACH_FILE_CONTENT_TYPE);
     }
@@ -373,11 +299,7 @@ class AttachmentResourceIT {
         Attachment partialUpdatedAttachment = new Attachment();
         partialUpdatedAttachment.setId(attachment.getId());
 
-        partialUpdatedAttachment
-            .filename(UPDATED_FILENAME)
-            .contentType(UPDATED_CONTENT_TYPE)
-            .attachFile(UPDATED_ATTACH_FILE)
-            .attachFileContentType(UPDATED_ATTACH_FILE_CONTENT_TYPE);
+        partialUpdatedAttachment.attachFile(UPDATED_ATTACH_FILE).attachFileContentType(UPDATED_ATTACH_FILE_CONTENT_TYPE);
 
         restAttachmentMockMvc
             .perform(
@@ -392,8 +314,6 @@ class AttachmentResourceIT {
         List<Attachment> attachmentList = attachmentRepository.findAll();
         assertThat(attachmentList).hasSize(databaseSizeBeforeUpdate);
         Attachment testAttachment = attachmentList.get(attachmentList.size() - 1);
-        assertThat(testAttachment.getFilename()).isEqualTo(UPDATED_FILENAME);
-        assertThat(testAttachment.getContentType()).isEqualTo(UPDATED_CONTENT_TYPE);
         assertThat(testAttachment.getAttachFile()).isEqualTo(UPDATED_ATTACH_FILE);
         assertThat(testAttachment.getAttachFileContentType()).isEqualTo(UPDATED_ATTACH_FILE_CONTENT_TYPE);
     }

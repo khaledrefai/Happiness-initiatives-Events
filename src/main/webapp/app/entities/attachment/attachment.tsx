@@ -51,12 +51,6 @@ export const Attachment = (props: RouteComponentProps<{ url: string }>) => {
                   <Translate contentKey="happinessInitiativesApp.attachment.id">ID</Translate>
                 </th>
                 <th>
-                  <Translate contentKey="happinessInitiativesApp.attachment.filename">Filename</Translate>
-                </th>
-                <th>
-                  <Translate contentKey="happinessInitiativesApp.attachment.contentType">Content Type</Translate>
-                </th>
-                <th>
                   <Translate contentKey="happinessInitiativesApp.attachment.attachFile">Attach File</Translate>
                 </th>
                 <th>
@@ -73,8 +67,6 @@ export const Attachment = (props: RouteComponentProps<{ url: string }>) => {
                       {attachment.id}
                     </Button>
                   </td>
-                  <td>{attachment.filename}</td>
-                  <td>{attachment.contentType}</td>
                   <td>
                     {attachment.attachFile ? (
                       <div>

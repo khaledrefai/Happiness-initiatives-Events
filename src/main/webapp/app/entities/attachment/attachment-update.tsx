@@ -90,26 +90,6 @@ export const AttachmentUpdate = (props: RouteComponentProps<{ id: string }>) => 
                   validate={{ required: true }}
                 />
               ) : null}
-              <ValidatedField
-                label={translate('happinessInitiativesApp.attachment.filename')}
-                id="attachment-filename"
-                name="filename"
-                data-cy="filename"
-                type="text"
-                validate={{
-                  required: { value: true, message: translate('entity.validation.required') },
-                }}
-              />
-              <ValidatedField
-                label={translate('happinessInitiativesApp.attachment.contentType')}
-                id="attachment-contentType"
-                name="contentType"
-                data-cy="contentType"
-                type="text"
-                validate={{
-                  required: { value: true, message: translate('entity.validation.required') },
-                }}
-              />
               <ValidatedBlobField
                 label={translate('happinessInitiativesApp.attachment.attachFile')}
                 id="attachment-attachFile"
