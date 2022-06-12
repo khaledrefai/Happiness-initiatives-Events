@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity HappInitEvnt.
+    -->
+    <changeSet id="20220612110916-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="happ_evnt_typ_id"
+                                 baseTableName="happ_init_evnt"
+                                 constraintName="fk_happ_init_e__happ_evn_0e_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="happ_evnt_typ"/>
+
+        <addForeignKeyConstraint baseColumnNames="happ_init_typ_id"
+                                 baseTableName="happ_init_evnt"
+                                 constraintName="fk_happ_init_e__happ_ini_ed_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="happ_init_typ"/>
+
+        <addForeignKeyConstraint baseColumnNames="happ_targt_id"
+                                 baseTableName="happ_init_evnt"
+                                 constraintName="fk_happ_init_e__happ_tar_9f_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="happ_targt"/>
+
+        <addForeignKeyConstraint baseColumnNames="happ_evnt_plac_id"
+                                 baseTableName="happ_init_evnt"
+                                 constraintName="fk_happ_init_e__happ_evn_37_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="happ_evnt_plac"/>
+
+        <addForeignKeyConstraint baseColumnNames="happ_init_evnt_id"
+                                 baseTableName="rel_happ_init_evnt__employee"
+                                 constraintName="fk_rel_happ_in__happ_ini_f1_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="happ_init_evnt"/>
+
+        <addForeignKeyConstraint baseColumnNames="employee_id"
+                                 baseTableName="rel_happ_init_evnt__employee"
+                                 constraintName="fk_rel_happ_in__employee_d6_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="employee"/>
+
+        <addForeignKeyConstraint baseColumnNames="happ_init_evnt_id"
+                                 baseTableName="rel_happ_init_evn__benefici_ce"
+                                 constraintName="fk_rel_happ_in__happ_ini_4e_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="happ_init_evnt"/>
+
+        <addForeignKeyConstraint baseColumnNames="beneficiary_id"
+                                 baseTableName="rel_happ_init_evn__benefici_ce"
+                                 constraintName="fk_rel_happ_in__benefici_9f_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="beneficiary"/>
+    </changeSet>
+</databaseChangeLog>

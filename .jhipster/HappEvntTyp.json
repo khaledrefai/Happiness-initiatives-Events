@@ -1,0 +1,21 @@
+{
+  "applications": "*",
+  "changelogDate": "20220612110909",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "happ_evnt_typ",
+  "fields": [
+    {
+      "fieldName": "eventName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "HappEvntTyp",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

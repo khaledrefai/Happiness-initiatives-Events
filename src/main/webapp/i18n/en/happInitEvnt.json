@@ -1,0 +1,38 @@
+{
+  "happinessInitiativesApp": {
+    "happInitEvnt": {
+      "home": {
+        "title": "Happ Init Evnts",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Happ Init Evnt",
+        "createOrEditLabel": "Create or edit a Happ Init Evnt",
+        "notFound": "No Happ Init Evnts found"
+      },
+      "created": "A new Happ Init Evnt is created with identifier {{ param }}",
+      "updated": "A Happ Init Evnt is updated with identifier {{ param }}",
+      "deleted": "A Happ Init Evnt is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Happ Init Evnt {{ id }}?"
+      },
+      "detail": {
+        "title": "Happ Init Evnt"
+      },
+      "id": "ID",
+      "initEventName": "Init Event Name",
+      "dateFrom": "Date From",
+      "dateTo": "Date To",
+      "totalTarget": "Total Target",
+      "notes": "Notes",
+      "initOrEvent": "Init Or Event",
+      "addDate": "Add Date",
+      "addBy": "Add By",
+      "attachment": "Attachment",
+      "happEvntTyp": "Happ Evnt Typ",
+      "happInitTyp": "Happ Init Typ",
+      "happTargt": "Happ Targt",
+      "happEvntPlac": "Happ Evnt Plac",
+      "employee": "Employee",
+      "beneficiary": "Beneficiary"
+    }
+  }
+}

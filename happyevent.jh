@@ -1,0 +1,73 @@
+entity HappEvntTyp {
+	eventName String required
+}
+entity HappInitTyp {
+	initName String required
+}
+// an ignored comment
+/** not an ignored comment */
+entity HappTargt {
+	targetName String required
+}
+entity Department {
+  departmentName String
+}
+/**
+ * The Employee entity.
+ */
+entity Employee {
+ 	slmName String 
+}
+entity HappEvntPlac {
+	placeName String required
+}
+entity Beneficiary{
+ eid String,
+ uid String,
+ fullName String,
+ fullNameEn String,
+ grpNumber Long,
+ nationality Long,
+ genderId Integer,
+ birthDate LocalDate
+}
+entity HappInitEvnt {
+  initEventName String,
+  dateFrom LocalDate,
+  dateTo LocalDate,
+  totalTarget Integer,
+  notes String  ,
+  initOrEvent InitOrEvent,
+  addDate LocalDate,
+  addBy Long
+}
+enum InitOrEvent{
+	INITIATIVE, EVENT
+}
+entity Attachment {
+    filename String required            // Generated unique filename on the server
+    contentType String required
+    attachFile Blob required
+}
+relationship ManyToOne {
+  HappInitEvnt{happEvntTyp} to HappEvntTyp,
+  HappInitEvnt{happInitTyp} to HappInitTyp,
+    HappInitEvnt{happTargt} to HappTargt,
+      HappInitEvnt{happEvntPlac} to HappEvntPlac,
+             Employee{department} to Department
+ }
+relationship ManyToMany {
+    HappInitEvnt{employee(slmName)} to Employee{happInitEvnt}
+    HappInitEvnt{beneficiary(fullName)} to Beneficiary{happInitEvnt}
+}
+relationship OneToMany {
+	HappInitEvnt{attachment} to Attachment
+
+}
+// Set pagination options
+paginate HappInitEvnt, Employee, Beneficiary with pagination
+filter HappInitEvnt
+// Use Data Transfer Objects (DTO)
+// dto * with mapstruct
+readOnly Employee, Department
+

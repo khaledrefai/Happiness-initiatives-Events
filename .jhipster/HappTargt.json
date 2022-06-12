@@ -1,0 +1,22 @@
+{
+  "applications": "*",
+  "changelogDate": "20220612110911",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "happ_targt",
+  "fields": [
+    {
+      "fieldName": "targetName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "javadoc": "not an ignored comment",
+  "jpaMetamodelFiltering": false,
+  "name": "HappTargt",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

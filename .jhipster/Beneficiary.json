@@ -1,0 +1,56 @@
+{
+  "applications": "*",
+  "changelogDate": "20220612110915",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "beneficiary",
+  "fields": [
+    {
+      "fieldName": "eid",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "uid",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fullName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fullNameEn",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "grpNumber",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "nationality",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "genderId",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "birthDate",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Beneficiary",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "happInitEvnt",
+      "otherEntityRelationshipName": "beneficiary",
+      "ownerSide": false,
+      "relationshipName": "happInitEvnt",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "no"
+}

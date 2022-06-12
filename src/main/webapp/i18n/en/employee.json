@@ -1,0 +1,18 @@
+{
+  "happinessInitiativesApp": {
+    "employee": {
+      "home": {
+        "title": "Employees",
+        "refreshListLabel": "Refresh list",
+        "notFound": "No Employees found"
+      },
+      "detail": {
+        "title": "Employee"
+      },
+      "id": "ID",
+      "slmName": "Slm Name",
+      "department": "Department",
+      "happInitEvnt": "Happ Init Evnt"
+    }
+  }
+}

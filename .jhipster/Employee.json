@@ -1,0 +1,35 @@
+{
+  "applications": "*",
+  "changelogDate": "20220612110913",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "employee",
+  "fields": [
+    {
+      "fieldName": "slmName",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "javadoc": "The Employee entity.",
+  "jpaMetamodelFiltering": false,
+  "name": "Employee",
+  "pagination": "pagination",
+  "readOnly": true,
+  "relationships": [
+    {
+      "otherEntityName": "department",
+      "otherEntityRelationshipName": "employee",
+      "relationshipName": "department",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "happInitEvnt",
+      "otherEntityRelationshipName": "employee",
+      "ownerSide": false,
+      "relationshipName": "happInitEvnt",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "no"
+}

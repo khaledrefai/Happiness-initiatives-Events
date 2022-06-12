@@ -1,0 +1,39 @@
+{
+  "applications": "*",
+  "changelogDate": "20220612110917",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "attachment",
+  "fields": [
+    {
+      "fieldName": "filename",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "contentType",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "attachFile",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Attachment",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "happInitEvnt",
+      "otherEntityRelationshipName": "attachment",
+      "relationshipName": "happInitEvnt",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}
