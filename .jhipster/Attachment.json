@@ -6,16 +6,6 @@
   "entityTableName": "attachment",
   "fields": [
     {
-      "fieldName": "filename",
-      "fieldType": "String",
-      "fieldValidateRules": ["required"]
-    },
-    {
-      "fieldName": "contentType",
-      "fieldType": "String",
-      "fieldValidateRules": ["required"]
-    },
-    {
       "fieldName": "attachFile",
       "fieldType": "byte[]",
       "fieldTypeBlobContent": "any",

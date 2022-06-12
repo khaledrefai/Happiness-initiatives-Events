@@ -31,18 +31,6 @@ export const AttachmentDetail = (props: RouteComponentProps<{ id: string }>) => 
           </dt>
           <dd>{attachmentEntity.id}</dd>
           <dt>
-            <span id="filename">
-              <Translate contentKey="happinessInitiativesApp.attachment.filename">Filename</Translate>
-            </span>
-          </dt>
-          <dd>{attachmentEntity.filename}</dd>
-          <dt>
-            <span id="contentType">
-              <Translate contentKey="happinessInitiativesApp.attachment.contentType">Content Type</Translate>
-            </span>
-          </dt>
-          <dd>{attachmentEntity.contentType}</dd>
-          <dt>
             <span id="attachFile">
               <Translate contentKey="happinessInitiativesApp.attachment.attachFile">Attach File</Translate>
             </span>

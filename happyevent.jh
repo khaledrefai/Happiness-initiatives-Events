@@ -45,8 +45,6 @@ enum InitOrEvent{
 	INITIATIVE, EVENT
 }
 entity Attachment {
-    filename String required            // Generated unique filename on the server
-    contentType String required
     attachFile Blob required
 }
 relationship ManyToOne {

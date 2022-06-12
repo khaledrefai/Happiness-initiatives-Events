@@ -125,12 +125,6 @@ public class AttachmentResource {
         Optional<Attachment> result = attachmentRepository
             .findById(attachment.getId())
             .map(existingAttachment -> {
-                if (attachment.getFilename() != null) {
-                    existingAttachment.setFilename(attachment.getFilename());
-                }
-                if (attachment.getContentType() != null) {
-                    existingAttachment.setContentType(attachment.getContentType());
-                }
                 if (attachment.getAttachFile() != null) {
                     existingAttachment.setAttachFile(attachment.getAttachFile());
                 }

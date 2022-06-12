@@ -20,14 +20,6 @@ public class Attachment implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @NotNull
-    @Column(name = "filename", nullable = false)
-    private String filename;
-
-    @NotNull
-    @Column(name = "content_type", nullable = false)
-    private String contentType;
-
     @Lob
     @Column(name = "attach_file", nullable = false)
     private byte[] attachFile;
@@ -56,32 +48,6 @@ public class Attachment implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getFilename() {
-        return this.filename;
-    }
-
-    public Attachment filename(String filename) {
-        this.setFilename(filename);
-        return this;
-    }
-
-    public void setFilename(String filename) {
-        this.filename = filename;
-    }
-
-    public String getContentType() {
-        return this.contentType;
-    }
-
-    public Attachment contentType(String contentType) {
-        this.setContentType(contentType);
-        return this;
-    }
-
-    public void setContentType(String contentType) {
-        this.contentType = contentType;
     }
 
     public byte[] getAttachFile() {
@@ -147,8 +113,6 @@ public class Attachment implements Serializable {
     public String toString() {
         return "Attachment{" +
             "id=" + getId() +
-            ", filename='" + getFilename() + "'" +
-            ", contentType='" + getContentType() + "'" +
             ", attachFile='" + getAttachFile() + "'" +
             ", attachFileContentType='" + getAttachFileContentType() + "'" +
             "}";
