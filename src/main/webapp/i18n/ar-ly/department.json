@@ -1,0 +1,16 @@
+{
+  "happinessInitiativesApp": {
+    "department": {
+      "home": {
+        "title": "Departments",
+        "refreshListLabel": "Refresh list",
+        "notFound": "No Departments found"
+      },
+      "detail": {
+        "title": "Department"
+      },
+      "id": "ID",
+      "departmentName": "Department Name"
+    }
+  }
+}

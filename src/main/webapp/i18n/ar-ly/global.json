@@ -7,6 +7,15 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "الكيانات",
+        "happEvntTyp": "Happ Evnt Typ",
+        "happInitTyp": "Happ Init Typ",
+        "happTargt": "Happ Targt",
+        "department": "Department",
+        "employee": "Employee",
+        "happEvntPlac": "Happ Evnt Plac",
+        "beneficiary": "Beneficiary",
+        "happInitEvnt": "Happ Init Evnt",
+        "attachment": "Attachment",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

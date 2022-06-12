@@ -1,0 +1,96 @@
+{
+  "applications": "*",
+  "changelogDate": "20220612110916",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "happ_init_evnt",
+  "fields": [
+    {
+      "fieldName": "initEventName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dateFrom",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "dateTo",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "totalTarget",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "notes",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "initOrEvent",
+      "fieldType": "InitOrEvent",
+      "fieldValues": "INITIATIVE,EVENT"
+    },
+    {
+      "fieldName": "addDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "addBy",
+      "fieldType": "Long"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "HappInitEvnt",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "attachment",
+      "otherEntityRelationshipName": "happInitEvnt",
+      "relationshipName": "attachment",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "happEvntTyp",
+      "otherEntityRelationshipName": "happInitEvnt",
+      "relationshipName": "happEvntTyp",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "happInitTyp",
+      "otherEntityRelationshipName": "happInitEvnt",
+      "relationshipName": "happInitTyp",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "happTargt",
+      "otherEntityRelationshipName": "happInitEvnt",
+      "relationshipName": "happTargt",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "happEvntPlac",
+      "otherEntityRelationshipName": "happInitEvnt",
+      "relationshipName": "happEvntPlac",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "slmName",
+      "otherEntityName": "employee",
+      "otherEntityRelationshipName": "happInitEvnt",
+      "ownerSide": true,
+      "relationshipName": "employee",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityField": "fullName",
+      "otherEntityName": "beneficiary",
+      "otherEntityRelationshipName": "happInitEvnt",
+      "ownerSide": true,
+      "relationshipName": "beneficiary",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}
